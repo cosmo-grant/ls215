@@ -1,5 +1,5 @@
 function longestSentence(text) {
-  let sentenceRE = /\w[^\.|\!|\?]*[\.|\!|\?]/g;
+  let sentenceRE = /\w[^.!?]*[.!?]/g;
   let sentences = text.match(sentenceRE);
   let longestSentence = sentences.reduce((longestSoFar, currentSentence) => {
     return numWords(currentSentence) > numWords(longestSoFar) ? currentSentence : longestSoFar;
@@ -11,7 +11,7 @@ function longestSentence(text) {
 }
 
 function numWords(sentence) {
-  return sentence.split(/[\s|\.|\!|\?]+/).length - 1;
+  return sentence.split(/[\s.!?]+/).length - 1;
   // Need to subtract 1 because the sentence will end on a match for the regex,
   // so the split array will include '' at end.
 }
